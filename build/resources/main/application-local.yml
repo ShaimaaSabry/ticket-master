@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    initializationMode: always
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:4444/ticketmaster_local
+    username: postgres
+    password: postgres
+
+logging:
+  level:
+    shaimaa.ticketmaster: DEBUG

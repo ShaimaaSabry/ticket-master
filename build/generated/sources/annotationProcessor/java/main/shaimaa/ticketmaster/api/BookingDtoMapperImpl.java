@@ -1,0 +1,73 @@
+package shaimaa.ticketmaster.api;
+
+import java.time.LocalDateTime;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+import shaimaa.ticketmaster.api.v1.event.EventDTO;
+import shaimaa.ticketmaster.api.v1.event.TicketDTO;
+import shaimaa.ticketmaster.domain.Booking;
+import shaimaa.ticketmaster.domain.BookingStatus;
+import shaimaa.ticketmaster.domain.Ticket;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-08-08T10:50:34+0300",
+    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.4.jar, environment: Java 17.0.12 (Amazon.com Inc.)"
+)
+@Component
+class BookingDtoMapperImpl implements BookingDtoMapper {
+
+    @Override
+    public BookingResponseDTO map(Booking booking) {
+        if ( booking == null ) {
+            return null;
+        }
+
+        String id = null;
+        LocalDateTime createdOn = null;
+        TicketDTO[] tickets = null;
+        BookingStatus status = null;
+
+        id = booking.getId();
+        createdOn = booking.getCreatedOn();
+        tickets = ticketArrayToTicketDTOArray( booking.getTickets() );
+        status = booking.getStatus();
+
+        EventDTO show = null;
+
+        BookingResponseDTO bookingResponseDTO = new BookingResponseDTO( id, createdOn, show, tickets, status );
+
+        return bookingResponseDTO;
+    }
+
+    protected TicketDTO ticketToTicketDTO(Ticket ticket) {
+        if ( ticket == null ) {
+            return null;
+        }
+
+        String id = null;
+        float price = 0.0f;
+
+        id = ticket.getId();
+        price = ticket.getPrice();
+
+        TicketDTO ticketDTO = new TicketDTO( id, price );
+
+        return ticketDTO;
+    }
+
+    protected TicketDTO[] ticketArrayToTicketDTOArray(Ticket[] ticketArray) {
+        if ( ticketArray == null ) {
+            return null;
+        }
+
+        TicketDTO[] ticketDTOTmp = new TicketDTO[ticketArray.length];
+        int i = 0;
+        for ( Ticket ticket : ticketArray ) {
+            ticketDTOTmp[i] = ticketToTicketDTO( ticket );
+            i++;
+        }
+
+        return ticketDTOTmp;
+    }
+}

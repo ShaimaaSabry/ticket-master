@@ -1,0 +1,31 @@
+package shaimaa.ticketmaster.api.v1.event;
+
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+import shaimaa.ticketmaster.domain.Ticket;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-08-08T10:43:42+0300",
+    comments = "version: 1.4.2.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-7.6.4.jar, environment: Java 17.0.12 (Amazon.com Inc.)"
+)
+@Component
+class TicketDtoMapperImpl implements TicketDtoMapper {
+
+    @Override
+    public TicketDTO map(Ticket ticket) {
+        if ( ticket == null ) {
+            return null;
+        }
+
+        String id = null;
+        float price = 0.0f;
+
+        id = ticket.getId();
+        price = ticket.getPrice();
+
+        TicketDTO ticketDTO = new TicketDTO( id, price );
+
+        return ticketDTO;
+    }
+}
