@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    initializationMode: always
+    driverClassName: org.postgresql.Driver
+  jpa:
+    databasePlatform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      naming:
+        implicit-strategy: "org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl"
+        physical-strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"

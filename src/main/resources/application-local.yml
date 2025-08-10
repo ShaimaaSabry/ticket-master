@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    initializationMode: always
+    url: jdbc:postgresql://localhost:4444/ticketmaster_local
+    username: postgres
+    password: postgres
+
+logging:
+  level:
+    shaimaa.ticketmaster: DEBUG
